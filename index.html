@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Electron Screenshot Capture</title>
+</head>
+
+<body style="margin:0; padding:0;">
+    <h1 style="margin:0; padding:0;">Electron Screenshot Capture</h1>
+    <button id="screenshotButton">Take Screenshot</button>
+    <button id="clearScreenshot">Clear</button>
+    <span id="screenshotPath"></span>
+    <img id="screenshotImage" style="display:none; margin-top:20px; padding-bottom: 20px; max-width:100%;" alt="ScreenShot Preview"/>
+
+    <script>
+        const screenshotButton = document.getElementById('screenshotButton');
+        const clearScreenshot = document.getElementById('clearScreenshot');
+        const screenshotImage = document.getElementById('screenshotImage');
+        const screenshotPath = document.getElementById('screenshotPath');
+
+        screenshotButton.addEventListener('click', () => {
+            window.electron.takeScreenshot();
+        });
+
+        clearScreenshot.addEventListener('click', () => {
+            screenshotImage.src = '';
+            screenshotImage.style.display = 'none';
+            screenshotPath.innerHTML = '';
+
+        });
+
+    </script>
+</body>
+
+</html>
